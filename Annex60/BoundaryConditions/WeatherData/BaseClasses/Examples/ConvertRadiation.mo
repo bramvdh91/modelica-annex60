@@ -7,8 +7,7 @@ model ConvertRadiation "Test model for ConvertRadiation"
   Annex60.BoundaryConditions.WeatherData.BaseClasses.ConvertRadiation
     conDifRad "Convert units for diffuse horizontal radiation"
     annotation (Placement(transformation(extent={{40,-30},{60,-10}})));
-  Annex60.Utilities.Time.ModelTime modTim
-    "Block that outputs simulation time"
+  Annex60.Utilities.Time.ModelTime modTim "Block that outputs simulation time"
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   Annex60.BoundaryConditions.WeatherData.BaseClasses.ConvertTime timCon
     "Convert simmulation time to calendar time"
@@ -27,20 +26,16 @@ protected
 equation
   connect(timCon.calTim, datRea.u) annotation (Line(
       points={{-19,0},{-2,0}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   connect(datRea.y[8], conGloRad.HIn) annotation (Line(
       points={{21,-0.482759},{30,-0.482759},{30,20},{38,20}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   connect(datRea.y[10], conDifRad.HIn) annotation (Line(
       points={{21,-0.344828},{30,-0.344828},{30,-20},{38,-20}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   connect(modTim.y, timCon.modTim) annotation (Line(
       points={{-59,0},{-42,0}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   annotation (
 Documentation(info="<html>
 <p>

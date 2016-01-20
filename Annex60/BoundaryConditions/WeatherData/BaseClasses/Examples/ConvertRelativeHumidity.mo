@@ -5,8 +5,7 @@ model ConvertRelativeHumidity
   Annex60.BoundaryConditions.WeatherData.BaseClasses.ConvertRelativeHumidity conRelHum
     "Block that converts relative humidity"
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
-  Annex60.Utilities.Time.ModelTime modTim
-    "Block that outputs simulation time"
+  Annex60.Utilities.Time.ModelTime modTim "Block that outputs simulation time"
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   Annex60.BoundaryConditions.WeatherData.BaseClasses.ConvertTime conTim
     "Block that converts time"
@@ -25,16 +24,13 @@ protected
 equation
   connect(datRea.y[3], conRelHum.relHumIn) annotation (Line(
       points={{21,-0.827586},{30,-0.827586},{30,0},{38,0}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   connect(modTim.y, conTim.modTim) annotation (Line(
       points={{-59,0},{-42,0}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   connect(conTim.calTim, datRea.u) annotation (Line(
       points={{-19,0},{-2,0}},
-      color={0,0,127},
-      smooth=Smooth.None));
+      color={0,0,127}));
   annotation (
   Documentation(info="<html>
 <p>
