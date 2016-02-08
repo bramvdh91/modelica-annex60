@@ -1,6 +1,7 @@
 within Annex60.Fluid.Actuators.Valves;
-package Data "Data files for valves"
+package Data "Data records for table-based valves"
   extends Modelica.Icons.MaterialPropertiesPackage;
+
 
   annotation(Documentation(info="<html>
 <p>
