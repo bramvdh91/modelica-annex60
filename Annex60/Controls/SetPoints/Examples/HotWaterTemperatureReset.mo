@@ -30,13 +30,16 @@ model HotWaterTemperatureReset "Test model for the heating curve"
 equation
   connect(TOut.y, heaCur.TOut) annotation (Line(
       points={{-59,50},{-50,50},{-50,56},{-42,56}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(TOut2.y, heaCur1.TOut) annotation (Line(
       points={{-59,10},{-50,10},{-50,16},{-42,16}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(TRoo.y, heaCur1.TRoo_in) annotation (Line(
       points={{-59,-30},{-50,-30},{-50,4},{-41.9,4}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation (experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Controls/SetPoints/Examples/HotWaterTemperatureReset.mos"
         "Simulate and plot"),

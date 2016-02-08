@@ -11,7 +11,8 @@ equation
   connect(weaDat.weaBus, zen.weaBus) annotation (Line(
       points={{-20,10},{20,10}},
       color={255,204,51},
-      thickness=0.5));
+      thickness=0.5,
+      smooth=Smooth.None));
   annotation (
   Documentation(info="<html>
 <p>

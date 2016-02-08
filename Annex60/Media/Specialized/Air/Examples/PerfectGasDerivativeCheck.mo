@@ -4,37 +4,32 @@ model PerfectGasDerivativeCheck
 
    package Medium = Annex60.Media.Specialized.Air.PerfectGas;
 
-    Modelica.SIunits.Temperature T "Temperature";
     Modelica.SIunits.SpecificEnthalpy hLiqSym "Liquid phase enthalpy";
     Modelica.SIunits.SpecificEnthalpy hLiqCod "Liquid phase enthalpy";
     Modelica.SIunits.SpecificEnthalpy hSteSym "Water vapor enthalpy";
     Modelica.SIunits.SpecificEnthalpy hSteCod "Water vapor enthalpy";
     Modelica.SIunits.SpecificEnthalpy hAirSym "Dry air enthalpy";
     Modelica.SIunits.SpecificEnthalpy hAirCod "Dry air enthalpy";
-    constant Real convT(unit="K/s3") = 270
+    constant Real conv(unit="K/s") = 1
     "Conversion factor to satisfy unit check";
 initial equation
      hLiqSym = hLiqCod;
      hSteSym = hSteCod;
      hAirSym = hAirCod;
 equation
-    T = 273.15+convT*time^3;
-
-    hLiqCod=Medium.enthalpyOfLiquid(T);
+    hLiqCod=Medium.enthalpyOfLiquid(conv*time);
     der(hLiqCod)=der(hLiqSym);
     assert(abs(hLiqCod-hLiqSym) < 1E-2, "Model has an error");
 
-    hSteCod=Medium.enthalpyOfCondensingGas(T);
+    hSteCod=Medium.enthalpyOfCondensingGas(conv*time);
     der(hSteCod)=der(hSteSym);
     assert(abs(hSteCod-hSteSym) < 1E-2, "Model has an error");
 
-    hAirCod=Medium.enthalpyOfDryAir(T);
+    hAirCod=Medium.enthalpyOfDryAir(conv*time);
     der(hAirCod)=der(hAirSym);
     assert(abs(hAirCod-hAirSym) < 1E-2, "Model has an error");
 
-   annotation(experiment(
-                 StopTime=1,
-                 Tolerance=1e-08),
+   annotation(experiment(StartTime=273.15, StopTime=373.15),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Media/Specialized/Air/Examples/PerfectGasDerivativeCheck.mos"
         "Simulate and plot"),
       Documentation(info="<html>
@@ -45,12 +40,6 @@ is not correct, the model will stop with an assert statement.
 </p>
 </html>",   revisions="<html>
 <ul>
-<li>
-August 17, 2015, by Michael Wetter:<br/>
-Changed regression test to have slope different from one.
-This is for
-<a href=\"https://github.com/iea-annex60/modelica-annex60/issues/303\">issue 303</a>.
-</li>
 <li>
 May 12, 2008, by Michael Wetter:<br/>
 First implementation.

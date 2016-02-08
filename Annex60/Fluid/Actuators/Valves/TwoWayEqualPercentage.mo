@@ -1,6 +1,5 @@
 within Annex60.Fluid.Actuators.Valves;
-model TwoWayEqualPercentage
-  "Two way valve with equal percentage flow characteristics"
+model TwoWayEqualPercentage "Two way valve with linear flow characteristics"
   extends BaseClasses.PartialTwoWayValveKv(phi=if homotopyInitialization then
         homotopy(actual=Annex60.Fluid.Actuators.BaseClasses.equalPercentage(
         y_actual,

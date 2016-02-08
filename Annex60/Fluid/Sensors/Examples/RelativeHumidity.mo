@@ -66,16 +66,20 @@ equation
           {-40,-10},{-40,18},{-32,18}},       color={0,0,127}));
   connect(m_flow.y, sou.m_flow_in)          annotation (Line(
       points={{-59,50},{-46,50},{-46,30},{-30,30}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(relHum.port_b, sin.ports[1]) annotation (Line(
       points={{40,20},{60,20}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(senRelHum.port, sou.ports[1]) annotation (Line(
       points={{-6,42},{-6,24},{-10,24}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(sou.ports[2], relHum.port_a) annotation (Line(
       points={{-10,20},{20,20}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
     annotation (experiment(StopTime=600),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Fluid/Sensors/Examples/RelativeHumidity.mos"
         "Simulate and plot"),

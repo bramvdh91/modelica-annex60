@@ -16,16 +16,20 @@ model SolarTime "Test model for solar time"
 equation
   connect(modTim.y, locTim.cloTim) annotation (Line(
       points={{-39,-10},{-30,-10},{-30,-30},{-22,-30}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(locTim.locTim, solTim.locTim) annotation (Line(
       points={{1,-30},{8,-30},{8,-15.4},{18,-15.4}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(modTim.y, eqnTim.nDay) annotation (Line(
       points={{-39,-10},{-30,-10},{-30,10},{-22,10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(eqnTim.eqnTim, solTim.equTim) annotation (Line(
       points={{1,10},{8,10},{8,-4},{18,-4}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation (
   Documentation(info="<html>
 <p>

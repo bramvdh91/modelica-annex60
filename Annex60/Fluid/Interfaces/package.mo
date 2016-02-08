@@ -100,8 +100,8 @@ see the <i>info</i> section of the class.
 <!-- ============================================== -->
 <tr>
   <td>
-     <a href=\"modelica://Annex60.Fluid.Interfaces.PartialFourPort\">
-                          Annex60.Fluid.Interfaces.PartialFourPort</a>
+     <a href=\"modelica://Annex60.Fluid.Interfaces.FourPort\">
+                          Annex60.Fluid.Interfaces.FourPort</a>
   </td>
   <td>
      This model defines an interface for components with four ports.
@@ -214,6 +214,19 @@ see the <i>info</i> section of the class.
 </html>"));
 
 end UsersGuide;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 annotation (preferredView="info", Documentation(info="<html>

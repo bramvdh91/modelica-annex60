@@ -168,7 +168,9 @@ First implementation.
 </ul>
 </html>"),
    Icon(graphics={Line(
-         points={{0,100},{0,-24}}),
+         points={{0,100},{0,-24}},
+         color={0,0,0},
+         smooth=Smooth.None),
         Rectangle(
           extent={{-100,40},{100,-42}},
           lineColor={0,0,0},

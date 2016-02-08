@@ -1,6 +1,5 @@
 within Annex60.Fluid.Actuators.Valves;
-model TwoWayQuickOpening
-  "Two way valve with quick opening flow characteristics"
+model TwoWayQuickOpening "Two way valve with linear flow characteristics"
   extends BaseClasses.PartialTwoWayValveKv(phi=if homotopyInitialization then
         homotopy(actual=l + Modelica.Fluid.Utilities.regPow(
         y_actual,

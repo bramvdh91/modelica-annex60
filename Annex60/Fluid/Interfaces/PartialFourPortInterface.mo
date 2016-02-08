@@ -1,7 +1,7 @@
 within Annex60.Fluid.Interfaces;
 partial model PartialFourPortInterface
   "Partial model transporting fluid between two ports without storing mass or energy"
-  extends Annex60.Fluid.Interfaces.PartialFourPort;
+  extends Annex60.Fluid.Interfaces.FourPort;
   parameter Modelica.SIunits.MassFlowRate m1_flow_nominal(min=0)
     "Nominal mass flow rate"
     annotation(Dialog(group = "Nominal condition"));

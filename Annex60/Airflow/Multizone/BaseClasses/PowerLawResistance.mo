@@ -1,7 +1,8 @@
 within Annex60.Airflow.Multizone.BaseClasses;
 partial model PowerLawResistance "Flow resistance that uses the power law"
   extends Annex60.Fluid.Interfaces.PartialTwoPortInterface(
-    final m_flow_nominal=rho_default*k*dp_turbulent);
+    final m_flow_nominal=rho_default*k*dp_turbulent,
+    final showDesignFlowDirection=false);
   extends Annex60.Airflow.Multizone.BaseClasses.ErrorControl;
 
   parameter Modelica.SIunits.Area A "|Orifice characteristics|Area of orifice";
@@ -116,29 +117,18 @@ equation
 <p>
 This model describes the mass flow rate and pressure difference relation
 of an orifice in the form
-</p>
 <pre>
     V_flow = k * dp^m,
 </pre>
-<p>
 where <code>k</code> is a variable and
 <code>m</code> a parameter.
 For turbulent flow, set <code>m=1/2</code> and
 for laminar flow, set <code>m=1</code>.
-</p>
 <p>
 The model is used as a base for the interzonal air flow models.
-</p>
 </html>",
 revisions="<html>
 <ul>
-<li>
-November 19, 2015, by Michael Wetter:<br/>
-Removed assignment of parameter
-<code>showDesignFlowDirection</code> in <code>extends</code> statement.
-This is for
-<a href=\"https://github.com/iea-annex60/modelica-annex60/issues/349\">#349</a>.
-</li>
 <li>
 January 21, 2015 by Michael Wetter:<br/>
 Changed type of <code>mExc</code> as <code>Modelica.SIunits.Mass</code>

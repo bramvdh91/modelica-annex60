@@ -14,10 +14,12 @@ equation
 
   connect(x1.y, biquadratic.u1) annotation (Line(
       points={{-59,70},{-52,70},{-52,56},{-42,56}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(x2.y, biquadratic.u2) annotation (Line(
       points={{-59,30},{-50,30},{-50,44},{-42,44}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation(experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Utilities/Math/Examples/Biquadratic.mos"
         "Simulate and plot"),

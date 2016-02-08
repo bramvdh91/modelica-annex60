@@ -10,7 +10,7 @@ This package provides
 models to compute the air flow between different rooms and between
 a room and the exterior environment.
 For models that compute airflow in duct networks, see
-<a href=\"modelica://Annex60.Fluid\">
+<a href=\"modelica://Buildings.Fluid\">
 Buildings.Fluid</a>.
 </html>"),
   Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
@@ -43,11 +43,13 @@ Buildings.Fluid</a>.
         points={{-84,6},{-44,6},{-44,18},{-24,0},{-44,-18},{-44,-6},{-84,-6},{
             -84,6}},
         lineColor={0,0,0},
+        smooth=Smooth.None,
         fillPattern=FillPattern.Solid,
         fillColor={0,0,0}),
       Polygon(
         points={{-30,6},{10,6},{10,18},{30,0},{10,-18},{10,-6},{-30,-6},{-30,6}},
         lineColor={0,0,0},
+        smooth=Smooth.None,
         fillPattern=FillPattern.Solid,
         fillColor={0,0,0},
         origin={0,62},

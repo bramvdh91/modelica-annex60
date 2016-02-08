@@ -4,6 +4,7 @@ model HeaterCooler_u "Model that demonstrates the ideal heater model"
 
   package Medium = Annex60.Media.Air;
 
+
   parameter Modelica.SIunits.MassFlowRate
     m_flow_nominal=3000/1000/20 "Nominal mass flow rate";
 
@@ -12,7 +13,8 @@ model HeaterCooler_u "Model that demonstrates the ideal heater model"
     use_T_in=false,
     p(displayUnit="Pa"),
     T=293.15,
-    nPorts=2) "Sink"
+    nPorts=2)
+    "Sink"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={130,50})));
   Annex60.Fluid.HeatExchangers.HeaterCooler_u heaSte(
     redeclare package Medium = Medium,
@@ -27,13 +29,15 @@ model HeaterCooler_u "Model that demonstrates the ideal heater model"
     m_flow_nominal=m_flow_nominal) "Temperature sensor"
     annotation (Placement(transformation(extent={{40,90},{60,110}})));
   Modelica.Blocks.Sources.TimeTable TSet(table=[0, 273.15 + 20; 120, 273.15
-    +20; 120, 273.15 + 30; 1200, 273.15 + 30]) "Setpoint"
+    +20; 120, 273.15 + 30; 1200, 273.15 + 30])
+    "Setpoint"
     annotation (Placement(transformation(extent={{-60,140},{-40,160}})));
   Annex60.Controls.Continuous.LimPID con1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     Td=1,
     k=1,
-    Ti=10) "Controller"
+    Ti=10)
+    "Controller"
     annotation (Placement(transformation(extent={{40,140},{60,160}})));
   Annex60.Fluid.HeatExchangers.HeaterCooler_u heaDyn(
     redeclare package Medium = Medium,
@@ -46,13 +50,14 @@ model HeaterCooler_u "Model that demonstrates the ideal heater model"
   Annex60.Fluid.Sensors.TemperatureTwoPort senTem2(
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal) "Temperature sensor"
-    annotation (Placement(transformation(extent={{40,-20},{60,0}})));
 
+    annotation (Placement(transformation(extent={{40,-20},{60,0}})));
   Annex60.Controls.Continuous.LimPID con2(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     Td=1,
     Ti=10,
-    k=0.1) "Controller"
+    k=0.1)
+    "Controller"
     annotation (Placement(transformation(extent={{40,30},{60,50}})));
 
   Annex60.Fluid.Sources.MassFlowSource_T sou(
@@ -65,46 +70,57 @@ model HeaterCooler_u "Model that demonstrates the ideal heater model"
 equation
   connect(senTem1.T, con1.u_m) annotation (Line(
       points={{50,111},{50,138}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(TSet.y, con1.u_s) annotation (Line(
       points={{-39,150},{38,150}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(con1.y, heaSte.u) annotation (Line(
       points={{61,150},{70,150},{70,130},{-10,130},{-10,106},{-2,106}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(heaSte.port_b, senTem1.port_a) annotation (Line(
       points={{20,100},{40,100}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(senTem2.T, con2.u_m) annotation (Line(
       points={{50,1},{50,28}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(TSet.y, con2.u_s) annotation (Line(
       points={{-39,150},{-14,150},{-14,40},{38,40}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(con2.y, heaDyn.u) annotation (Line(
       points={{61,40},{70,40},{70,20},{-10,20},{-10,-4},{-2,-4}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(heaDyn.port_b, senTem2.port_a) annotation (Line(
       points={{20,-10},{40,-10}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
 
   connect(heaSte.port_a, sou.ports[1]) annotation (Line(
       points={{0,100},{-40,100},{-40,52},{-60,52}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(sou.ports[2], heaDyn.port_a) annotation (Line(
       points={{-60,48},{-40,48},{-40,-10},{0,-10}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(senTem2.port_b, sin.ports[1]) annotation (Line(
       points={{60,-10},{100,-10},{100,48},{120,48}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(senTem1.port_b, sin.ports[2]) annotation (Line(
       points={{60,100},{100,100},{100,52},{120,52}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{200,
             200}}), graphics),
-    __Dymola_Commands(file= "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Validation/HeaterCooler_u.mos"
-        "Simulate and plot"),
+    __Dymola_Commands(file= "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Validation/HeaterCooler_u.mos" "Simulate and plot"),
     Documentation(info="<html>
 <p>
 Model that demonstrates the use of an ideal heater.

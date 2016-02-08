@@ -3,7 +3,8 @@ model MixingBox
   "Mixing box with constant pressure difference and varying control signal"
   extends Modelica.Icons.Example;
 
- package Medium = Annex60.Media.Air "Medium in the component"
+ package Medium = Annex60.Media.Air
+    "Medium in the component"
          annotation (choicesAllMatching = true);
 
   Dampers.MixingBox mixBox(
@@ -53,6 +54,7 @@ model MixingBox
     startTime=60)
                  annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
 
+
 equation
   connect(yDam.y, mixBox.y) annotation (Line(points={{-19,50},{24,50},{24,
           6.66134e-16}},
@@ -65,16 +67,20 @@ equation
           81,50}}, color={0,0,127}));
   connect(bouIn.ports[1], mixBox.port_Out) annotation (Line(
       points={{-40,14},{-16,14},{-16,-6},{14,-6}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(bouIn.ports[2], mixBox.port_Exh) annotation (Line(
       points={{-40,10},{-18,10},{-18,-18},{14,-18}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(bouSup.ports[1], mixBox.port_Sup) annotation (Line(
       points={{48,6.66134e-16},{42,6.66134e-16},{42,-6},{34,-6}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(bouRet.ports[1], mixBox.port_Ret) annotation (Line(
       points={{48,-80},{42,-80},{42,-18},{34,-18}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   annotation (             __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Fluid/Actuators/Dampers/Examples/MixingBox.mos"
         "Simulate and plot"),
     experiment(StopTime=240),

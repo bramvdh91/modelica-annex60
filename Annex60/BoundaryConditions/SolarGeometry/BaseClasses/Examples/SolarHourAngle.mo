@@ -15,7 +15,8 @@ equation
       points={{-60,5.82867e-16},{-56,5.82867e-16},{-56,1.13798e-15},{-52,
           1.13798e-15},{-52,0},{-44,0}},
       color={255,204,51},
-      thickness=0.5), Text(
+      thickness=0.5,
+      smooth=Smooth.None), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}}));
@@ -23,7 +24,8 @@ equation
       points={{-44,5.55112e-16},{-33.5,5.55112e-16},{-33.5,1.22125e-15},{-23,
           1.22125e-15},{-23,6.66134e-16},{-2,6.66134e-16}},
       color={255,204,51},
-      thickness=0.5), Text(
+      thickness=0.5,
+      smooth=Smooth.None), Text(
       string="%first",
       index=-1,
       extent={{-6,3},{-6,3}}));

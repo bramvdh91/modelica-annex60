@@ -9,16 +9,20 @@ protected
 equation
   connect(masExc.y, dynBal.mWat_flow) annotation (Line(
       points={{-59,60},{20,60},{20,12},{38,12}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(masExc.y, steBal.mWat_flow) annotation (Line(
       points={{-59,60},{-40,60},{-40,14},{-22,14}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(QSen_flow.y, steBal.Q_flow) annotation (Line(
       points={{-39,88},{-30,88},{-30,18},{-22,18}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(QSen_flow.y, dynBal.Q_flow) annotation (Line(
       points={{-39,88},{28,88},{28,16},{38,16}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation (
 defaultComponentName="vol",
 Documentation(info="<html>
@@ -32,9 +36,9 @@ The volume can exchange heat through its <code>heatPort</code>.
 The volume can be parameterized as a steady-state model or as
 dynamic model.</p>
 <p>
-To increase the numerical robustness of the model, the constant
+To increase the numerical robustness of the model, the parameter
 <code>prescribedHeatFlowRate</code> can be set by the user.
-This constant only has an effect if the model has exactly two fluid ports connected,
+This parameter only has an effect if the model has exactly two fluid ports connected,
 and if it is used as a steady-state model.
 Use the following settings:
 </p>
@@ -162,7 +166,7 @@ is used for smoothing in the steady-state balance equations of the model with tw
 </li>
 <li>
 Another revision was the removal of the parameter <code>use_HeatTransfer</code> as there is
-no noticeable overhead in always having the <code>heatPort</code> connector present.
+no noticable overhead in always having the <code>heatPort</code> connector present.
 </li>
 </ul>
 </li>

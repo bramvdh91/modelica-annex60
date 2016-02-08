@@ -53,10 +53,12 @@ equation
           textString="T_rel"),
         Line(
           points={{34,3},{-56,3}},
-          color={0,128,255}),
+          color={0,128,255},
+          smooth=Smooth.None),
         Polygon(
           points={{24,18},{64,3},{24,-12},{24,18}},
           lineColor={0,128,255},
+          smooth=Smooth.None,
           fillColor={0,128,255},
           fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>

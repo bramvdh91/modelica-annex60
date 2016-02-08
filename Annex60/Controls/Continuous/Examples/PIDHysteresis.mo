@@ -35,31 +35,40 @@ equation
 
   connect(TSet.y, con.u_s) annotation (Line(
       points={{-59,30},{-42,30}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(TBC.port, theCon.port_a) annotation (Line(
       points={{20,70},{38,70}},
-      color={191,0,0}));
+      color={191,0,0},
+      smooth=Smooth.None));
   connect(theCon.port_b, cap.port) annotation (Line(
       points={{58,70},{66,70},{66,30},{48,30}},
-      color={191,0,0}));
+      color={191,0,0},
+      smooth=Smooth.None));
   connect(con.y, gain.u) annotation (Line(
       points={{-19,30},{-14,30}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(cap.port, temSen.port) annotation (Line(
       points={{48,30},{70,30}},
-      color={191,0,0}));
+      color={191,0,0},
+      smooth=Smooth.None));
   connect(temSen.T, con.u_m) annotation (Line(
       points={{90,30},{94,30},{94,6},{-30,6},{-30,18}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(gain.y, Q_flow.Q_flow) annotation (Line(
       points={{9,30},{16,30}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(Q_flow.port, cap.port) annotation (Line(
       points={{36,30},{48,30}},
-      color={191,0,0}));
+      color={191,0,0},
+      smooth=Smooth.None));
   connect(sine.y, TBC.T) annotation (Line(
       points={{-59,70},{-2,70}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
  annotation (                      __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Controls/Continuous/Examples/PIDHysteresis.mos"
         "Simulate and plot"),
     experiment(StopTime=86400),

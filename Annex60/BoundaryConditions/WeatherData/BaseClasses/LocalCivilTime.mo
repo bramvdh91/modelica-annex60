@@ -1,21 +1,18 @@
 within Annex60.BoundaryConditions.WeatherData.BaseClasses;
 block LocalCivilTime "Converts the clock time to local civil time."
   extends Modelica.Blocks.Icons.Block;
-  Modelica.Blocks.Interfaces.RealInput cloTim(
-    final quantity="Time",
-    final unit="s") "Clock time"
+public
+  Modelica.Blocks.Interfaces.RealInput cloTim(final quantity="Time", final unit=
+       "s") "Clock time"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   parameter Modelica.SIunits.Time timZon(displayUnit="h") "Time zone";
   parameter Modelica.SIunits.Angle lon(displayUnit="deg") "Longitude";
-  Modelica.Blocks.Interfaces.RealOutput locTim(
-    final quantity="Time",
-    final unit="s") "Local civil time"
+  Modelica.Blocks.Interfaces.RealOutput locTim(final quantity="Time", final unit=
+           "s") "Local civil time"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-protected
-  final parameter Modelica.SIunits.Time diff = - timZon + lon*43200/Modelica.Constants.pi
-    "Difference between local and clock time";
+
 equation
-  locTim = cloTim + diff;
+  locTim = cloTim - timZon + lon*43200/Modelica.Constants.pi;
 
   annotation (
     defaultComponentName="locTim",
@@ -33,10 +30,6 @@ The formula is based on Michael Wetter's thesis (A4.1):
 </pre>
 </html>", revisions="<html>
 <ul>
-<li>
-November 14, 2015, by Michael Wetter:<br/>
-Introduced <code>diff</code>.
-</li>
 <li>
 February 27, 2011, by Wangda Zuo:<br/>
 First implementation.

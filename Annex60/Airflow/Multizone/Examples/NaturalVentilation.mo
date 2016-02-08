@@ -59,25 +59,32 @@ equation
     annotation (Line(points={{-63,-10},{-49,-10}}, color={0,0,255}));
   connect(oriOutBot.port_b, volOut.ports[1]) annotation (Line(
       points={{40,-20},{61,-20}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(preHeaFlo.port, volA.heatPort) annotation (Line(
       points={{-29,-10},{-10,-10}},
-      color={191,0,0}));
+      color={191,0,0},
+      smooth=Smooth.None));
   connect(volA.ports[1], oriOutBot.port_a) annotation (Line(
       points={{-2,-20},{20,-20}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(volA.ports[2], colRooTop.port_b) annotation (Line(
       points={{2,-20},{-20,-20},{-20,10},{-19.5,10}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(colRooTop.port_a, oriOutTop.port_a) annotation (Line(
       points={{-19.5,30},{-20,30},{-20,50},{23,50}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(volOut.ports[2], colOut.port_b) annotation (Line(
       points={{65,-20},{81,-20},{81,10}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(colOut.port_a, oriOutTop.port_b) annotation (Line(
       points={{81,30},{82,30},{82,50},{43,50}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{200,
             100}})),

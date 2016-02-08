@@ -2,13 +2,12 @@ within Annex60.BoundaryConditions.WeatherData.BaseClasses;
 block ConvertTime
   "Converts the simulation time to calendar time in scale of 1 year (365 days)"
   extends Modelica.Blocks.Icons.Block;
-  Modelica.Blocks.Interfaces.RealInput modTim(
-    final quantity="Time",
-    final unit="s") "Simulation time"
+public
+  Modelica.Blocks.Interfaces.RealInput modTim(final quantity="Time", final unit=
+       "s") "Simulation time"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput calTim(
-    final quantity="Time",
-    final unit="s") "Calendar time"
+  Modelica.Blocks.Interfaces.RealOutput calTim(final quantity="Time", final
+      unit="s") "Calendar time"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
 protected
@@ -62,13 +61,23 @@ First implementation.
           fillColor={120,120,120}),
         Rectangle(extent={{-66,58},{60,-62}}, lineColor={0,0,0}),
         Line(
-          points={{-24,-62},{-24,58}}),
+          points={{-24,-62},{-24,58}},
+          color={0,0,0},
+          smooth=Smooth.None),
         Line(
-          points={{18,-62},{18,58}}),
+          points={{18,-62},{18,58}},
+          color={0,0,0},
+          smooth=Smooth.None),
         Line(
-          points={{60,28},{-66,28}}),
+          points={{60,28},{-66,28}},
+          color={0,0,0},
+          smooth=Smooth.None),
         Line(
-          points={{60,-2},{-66,-2}}),
+          points={{60,-2},{-66,-2}},
+          color={0,0,0},
+          smooth=Smooth.None),
         Line(
-          points={{60,-32},{-66,-32}})}));
+          points={{60,-32},{-66,-32}},
+          color={0,0,0},
+          smooth=Smooth.None)}));
 end ConvertTime;

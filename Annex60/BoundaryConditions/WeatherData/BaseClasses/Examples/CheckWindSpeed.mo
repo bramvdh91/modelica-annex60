@@ -1,7 +1,8 @@
 within Annex60.BoundaryConditions.WeatherData.BaseClasses.Examples;
 model CheckWindSpeed "Test model for wind speed check"
   extends Modelica.Icons.Example;
-  Annex60.Utilities.Time.ModelTime modTim "Block that outputs simulation time"
+  Annex60.Utilities.Time.ModelTime modTim
+    "Block that outputs simulation time"
     annotation (Placement(transformation(extent={{-60,0},{-40,20}})));
   Annex60.BoundaryConditions.WeatherData.BaseClasses.CheckWindSpeed cheWinSpe
     "Block that constrains the wind speed"
@@ -22,13 +23,16 @@ protected
 equation
   connect(datRea.y[16], cheWinSpe.winSpeIn) annotation (Line(
       points={{41,10.069},{50,10.069},{50,10},{58,10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(modTim.y, conTim.modTim) annotation (Line(
       points={{-39,10},{-22,10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(conTim.calTim, datRea.u) annotation (Line(
       points={{1,10},{18,10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation (
 Documentation(info="<html>
 <p>

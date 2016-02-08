@@ -1,6 +1,7 @@
 within Annex60.BoundaryConditions.SolarGeometry.BaseClasses;
 block SolarHourAngle "Solar hour angle"
   extends Modelica.Blocks.Icons.Block;
+public
   Modelica.Blocks.Interfaces.RealInput solTim(quantity="Time", unit="s")
     "Solar time"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));

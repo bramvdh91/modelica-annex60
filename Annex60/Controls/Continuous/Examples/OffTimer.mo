@@ -13,13 +13,16 @@ model OffTimer "Example model for off timer"
 equation
   connect(booleanPulse.y, offTim1.u) annotation (Line(
       points={{-59,10},{-2,10}},
-      color={255,0,255}));
+      color={255,0,255},
+      smooth=Smooth.None));
   connect(booleanPulse.y, not1.u) annotation (Line(
       points={{-59,10},{-50,10},{-50,-30},{-42,-30}},
-      color={255,0,255}));
+      color={255,0,255},
+      smooth=Smooth.None));
   connect(offTim2.u, not1.y) annotation (Line(
       points={{-2,-30},{-19,-30}},
-      color={255,0,255}));
+      color={255,0,255},
+      smooth=Smooth.None));
  annotation (
 experiment(StopTime=1),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Controls/Continuous/Examples/OffTimer.mos"

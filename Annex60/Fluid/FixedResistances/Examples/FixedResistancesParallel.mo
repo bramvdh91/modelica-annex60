@@ -18,14 +18,14 @@ model FixedResistancesParallel
     linearized=false,
     from_dp=false)
              annotation (Placement(transformation(extent={{-28,30},{-8,50}})));
-  Annex60.Fluid.Sources.Boundary_pT sou1(          redeclare package Medium =
-        Medium,
+  Annex60.Fluid.Sources.Boundary_pT sou1(          redeclare package Medium
+      = Medium,
     T=293.15,
     nPorts=2,
     use_p_in=true)        annotation (Placement(transformation(extent={{-70,28},
             {-50,48}})));
-  Annex60.Fluid.Sources.Boundary_pT sin1(          redeclare package Medium =
-        Medium,
+  Annex60.Fluid.Sources.Boundary_pT sin1(          redeclare package Medium
+      = Medium,
     T=283.15,
     nPorts=2,
     use_p_in=true)        annotation (Placement(transformation(extent={{80,28},
@@ -62,23 +62,28 @@ equation
     annotation (Line(points={{-8,40},{20,40}},color={0,127,255}));
   connect(sou1.ports[1], res1.port_a) annotation (Line(
       points={{-50,40},{-28,40}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(sou1.ports[2], res2.port_a) annotation (Line(
       points={{-50,36},{-38,36},{-38,6.10623e-16},{-28,6.10623e-16}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(sin1.ports[1], masFlo1.port_b) annotation (Line(
       points={{60,40},{40,40}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(sin1.ports[2], masFlo2.port_b) annotation (Line(
       points={{60,36},{52,36},{52,6.10623e-16},{20,6.10623e-16}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(masFlo2.m_flow, assEqu.u1) annotation (Line(
       points={{10,11},{10,76},{38,76}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(masFlo1.m_flow, assEqu.u2) annotation (Line(
       points={{30,51},{30,64},{38,64}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
     annotation (experiment(StopTime=1.0),
-__Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Fluid/FixedResistances/Examples/FixedResistancesParallel.mos"
-        "Simulate and plot"));
+__Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Fluid/FixedResistances/Examples/FixedResistancesParallel.mos" "Simulate and plot"));
 end FixedResistancesParallel;

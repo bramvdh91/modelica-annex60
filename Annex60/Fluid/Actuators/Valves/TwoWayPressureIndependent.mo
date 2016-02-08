@@ -101,10 +101,14 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(
-          points={{0,40},{0,-4}}),
+          points={{0,40},{0,-4}},
+          color={0,0,0},
+          smooth=Smooth.None),
         Line(
           visible=not filteredOpening,
-          points={{0,100},{0,40}})}),
+          points={{0,100},{0,40}},
+          color={0,0,0},
+          smooth=Smooth.None)}),
 Documentation(info="<html>
 <p>
 Two way valve with a pressure-independent valve opening characteristic.

@@ -2,6 +2,7 @@
 *.bak-mo
 *.mat
 *.mof
+*.pyc
 buildlog.txt
 dsfinal.txt
 dsin.txt
@@ -14,13 +15,11 @@ dymosim.exe
 dymosim.exp
 dymosim.lib
 empty.txt
-modelDescription.xml
 request
 stat
 status
 stop
 success
-# Ignore files created by BuildingsPy
-*.py[cod]
+# Ignore files created by the unit tests.
 simulator.log
 unitTests.log

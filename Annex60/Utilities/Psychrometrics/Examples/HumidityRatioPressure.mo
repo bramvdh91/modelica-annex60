@@ -26,25 +26,32 @@ model HumidityRatioPressure "Unit test for humidity ratio model"
 equation
   connect(vapPre.p_w, humRat.p_w) annotation (Line(
       points={{21,10},{39,10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(humRat.X_w, assertEquality.u1) annotation (Line(
       points={{61,10},{70,10},{70,-24},{78,-24}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(p.y, humRat.p_in) annotation (Line(
       points={{-59,30},{30,30},{30,16},{38,16}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(p.y, vapPre.p_in) annotation (Line(
       points={{-59,30},{-20,30},{-20,16},{-2,16}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(XHumDryAir.y, toTotalAir.XiDry) annotation (Line(
       points={{-59,-10},{-41,-10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(toTotalAir.XiTotalAir, vapPre.X_w) annotation (Line(
       points={{-19,-10},{-12,-10},{-12,10},{-1,10}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(toTotalAir.XiTotalAir, assertEquality.u2) annotation (Line(
       points={{-19,-10},{24,-10},{24,-36},{78,-36}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
  annotation (
 experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Utilities/Psychrometrics/Examples/HumidityRatioPressure.mos"

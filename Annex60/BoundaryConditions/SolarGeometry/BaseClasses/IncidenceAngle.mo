@@ -1,6 +1,7 @@
 within Annex60.BoundaryConditions.SolarGeometry.BaseClasses;
 block IncidenceAngle "The solar incidence angle on a tilted surface"
   extends Modelica.Blocks.Icons.Block;
+public
   parameter Modelica.SIunits.Angle lat "Latitude";
   parameter Modelica.SIunits.Angle azi(displayUnit="degree")
     "Surface azimuth. azi=-90 degree if surface outward unit normal points toward east; azi=0 if it points toward south";
@@ -15,7 +16,7 @@ block IncidenceAngle "The solar incidence angle on a tilted surface"
   Modelica.Blocks.Interfaces.RealOutput incAng(
     final quantity="Angle",
     final unit="rad",
-    displayUnit="deg") "Incidence angle on a tilted surface"
+    displayUnit="deg") "Incidence angle on a tilted surfce"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 protected
   Real dec_c=Modelica.Math.cos(decAng) "Cosine of declination angle";

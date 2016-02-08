@@ -199,32 +199,41 @@ equation
                              color={0,0,127}));
   connect(damOA.port_a, port_Out) annotation (Line(
       points={{-40,30},{-70,30},{-70,60},{-100,60}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(damExh.port_b, port_Exh) annotation (Line(
       points={{-40,-60},{-100,-60}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(port_Sup, damOA.port_b) annotation (Line(
       points={{100,60},{80,60},{80,30},{-20,30}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(damRec.port_b, port_Sup) annotation (Line(
       points={{30,10},{30,30},{80,30},{80,60},{100,60}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(port_Ret, damExh.port_a) annotation (Line(
       points={{100,-60},{-20,-60}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(port_Ret, damRec.port_a) annotation (Line(
       points={{100,-60},{30,-60},{30,-10}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(y_actual, add.u2) annotation (Line(
       points={{50,70},{60,70},{60,60},{0,60},{0,-20},{-60,-20},{-60,-6},{-42,-6}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
 
   connect(y_actual, damOA.y) annotation (Line(
       points={{50,70},{60,70},{60,60},{-30,60},{-30,42}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(y_actual, damExh.y) annotation (Line(
       points={{50,70},{60,70},{60,60},{0,60},{0,-20},{-30,-20},{-30,-48}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation (                       Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
             -100},{100,100}}), graphics={
         Rectangle(
@@ -295,7 +304,8 @@ equation
           fillPattern=FillPattern.Solid),
         Line(
           points={{0,40},{0,10},{0,12}},
-          color={0,0,255}),
+          color={0,0,255},
+          smooth=Smooth.None),
                              Text(
           extent={{-50,-84},{48,-132}},
           lineColor={0,0,255},

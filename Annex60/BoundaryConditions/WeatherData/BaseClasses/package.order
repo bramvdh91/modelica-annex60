@@ -1,7 +1,5 @@
-CheckBlackBodySkyTemperature
 CheckCeilingHeight
 CheckPressure
-CheckIRRadiation
 CheckRadiation
 CheckRelativeHumidity
 CheckSkyCover

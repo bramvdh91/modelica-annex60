@@ -478,6 +478,7 @@ end UsersGuide;
 
 
 annotation (
+preferredView="info",
 version="0.1",
 versionBuild=0,
 versionDate="2013-09-20",

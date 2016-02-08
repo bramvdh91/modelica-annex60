@@ -60,33 +60,42 @@ equation
   connect(floMacSta.port_b, dpSta.port_a)
     annotation (Line(
       points={{40,80},{58,80}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(y.y, gain.u) annotation (Line(
       points={{-69,100},{-48,100}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   connect(floMacDyn.port_b, dpDyn.port_a) annotation (Line(
       points={{40,6.10623e-16},{50,-3.36456e-22},{50,6.10623e-16},{60,
           6.10623e-16}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(dpSta1.port_b, floMacSta.port_a) annotation (Line(
       points={{5.55112e-16,80},{20,80}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(dpDyn1.port_b, floMacDyn.port_a) annotation (Line(
       points={{5.55112e-16,6.10623e-16},{10,-3.36456e-22},{10,6.10623e-16},{20,
           6.10623e-16}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(dpSta1.port_a, sou.ports[1]) annotation (Line(
       points={{-20,80},{-60,80},{-60,-33},{-68,-33}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(dpDyn1.port_a, sou.ports[2]) annotation (Line(
       points={{-20,6.10623e-16},{-52,6.10623e-16},{-52,-35},{-68,-35}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(dpDyn.port_b, sou.ports[3]) annotation (Line(
       points={{80,6.10623e-16},{96,6.10623e-16},{96,-37},{-68,-37}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   connect(dpSta.port_b, sou.ports[4]) annotation (Line(
       points={{78,80},{100,80},{100,-39},{-68,-39}},
-      color={0,127,255}));
+      color={0,127,255},
+      smooth=Smooth.None));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{160,
             160}})),

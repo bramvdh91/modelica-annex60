@@ -14,7 +14,8 @@ model SublimationPressureIce
 equation
   connect(T.y, pSat.TSat) annotation (Line(
       points={{-39,0},{-11,0}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
     annotation (experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Utilities/Psychrometrics/Examples/SublimationPressureIce.mos"
         "Simulate and plot"),

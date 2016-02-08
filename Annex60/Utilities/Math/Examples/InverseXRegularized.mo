@@ -10,7 +10,8 @@ model InverseXRegularized "Test model for inverseXRegularized function "
 equation
   connect(x1.y, inverseXRegularized.u) annotation (Line(
       points={{-39,0},{-12,0}},
-      color={0,0,127}));
+      color={0,0,127},
+      smooth=Smooth.None));
   annotation (experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Utilities/Math/Examples/InverseXRegularized.mos"
         "Simulate and plot"), Documentation(info="<html>
