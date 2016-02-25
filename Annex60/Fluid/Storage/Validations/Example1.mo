@@ -35,7 +35,7 @@ model Example1
     tableOnFile=true,
     tableName="data",
     columns=2:21,
-    fileName="test1.mat")
+    fileName="../TankData/test1.mat")
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
   Modelica.Blocks.Math.Add add[nTemp]
     annotation (Placement(transformation(extent={{-68,20},{-48,40}})));
@@ -63,7 +63,7 @@ equation
 
   for i in 1:nTemp loop
     connect(const.y, add[i].u2)
-    annotation (Line(points={{-79,24},{-70,24},{-70,24}}, color={0,0,127}));
+    annotation (Line(points={{-79,24},{-70,24}},          color={0,0,127}));
   end for;
   connect(boundary.T_in, add[1].y)
     annotation (Line(points={{-36,14},{-47,14},{-47,30}}, color={0,0,127}));
