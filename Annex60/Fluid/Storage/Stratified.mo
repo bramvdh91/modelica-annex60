@@ -123,11 +123,11 @@ protected
     final allowFlowReversal=allowFlowReversal,
     final m_flow_small=m_flow_small) "Enthalpy flow rate at port b"
     annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor[nSeg - 1] conFlu(
-    each G=conFluSeg) "Thermal conductance in fluid between the segments"
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor[nSeg - 1] conFlu(each G=
+        conFluSeg) "Thermal conductance in fluid between the segments"
     annotation (Placement(transformation(extent={{-56,4},{-42,18}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor[nSeg] conWal(
-     each G=2*Modelica.Constants.pi*kIns*hSeg/Modelica.Math.log((rTan+dIns)/rTan))
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor[nSeg] conWal(each G=2*
+        Modelica.Constants.pi*kIns*hSeg/Modelica.Math.log((rTan + dIns)/rTan))
     "Thermal conductance through tank wall"
     annotation (Placement(transformation(extent={{10,34},{20,46}})));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor conTop(
