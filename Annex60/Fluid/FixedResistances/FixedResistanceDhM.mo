@@ -1,5 +1,5 @@
 within Annex60.Fluid.FixedResistances;
-model FixedResistance_dh
+model FixedResistanceDhM
   "Fixed flow resistance with dh and m_flow as parameter"
   extends Annex60.Fluid.BaseClasses.PartialFixedResistance(final m_flow_turbulent=
         if computeFlowResistance then eta_default*dh/4*Modelica.Constants.pi*
@@ -160,4 +160,4 @@ First implementation.
           extent={{-24,6},{26,-8}},
           lineColor={255,255,255},
           textString="dh")}));
-end FixedResistance_dh;
+end FixedResistanceDhM;

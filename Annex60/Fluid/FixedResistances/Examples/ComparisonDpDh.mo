@@ -63,13 +63,13 @@ model ComparisonDpDh
     dp_nominal=500,
     deltaM=0.0057/8)
     annotation (Placement(transformation(extent={{20,90},{40,110}})));
-  FixedResistance_dh res_dhSer1(
+  FixedResistanceDhM res_dhSer1(
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     dh=0.1,
     dp_nominal=500)
     annotation (Placement(transformation(extent={{-20,50},{0,70}})));
-  FixedResistance_dh res_dhSer2(
+  FixedResistanceDhM res_dhSer2(
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     dh=0.1,
@@ -81,7 +81,7 @@ model ComparisonDpDh
     dp_nominal=1000,
     deltaM=0.0057/8)
     annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
-  FixedResistance_dh res_dhSin(
+  FixedResistanceDhM res_dhSin(
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     dh=0.1,
