@@ -162,26 +162,7 @@ equation
               100}},
           lineColor={0,0,0},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-30,30},{28,-30}},
-          lineColor={0,0,0},
-          fillPattern=FillPattern.HorizontalCylinder,
-          fillColor={215,202,187}),
-        Ellipse(
-          extent={{-92,94},{-50,52}},
-          lineColor={28,108,200},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{20,20},{-20,-20}},
-          lineColor={28,108,200},
-          startAngle=30,
-          endAngle=90,
-          fillColor={0,0,127},
-          fillPattern=FillPattern.Solid,
-          origin={-70,74},
-          rotation=180)}),
+          fillPattern=FillPattern.Solid)}),
     Documentation(revisions="<html>
 <ul>
 <li>June 9, 2017 by Marcus Fuchs:<br>First implementation based on <a
