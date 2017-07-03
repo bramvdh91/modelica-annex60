@@ -111,7 +111,8 @@ public
     length=length,
     fac=1,
     final dh=diameter,
-    from_dp=from_dp) "Pressure drop calculation for this pipe"
+    from_dp=from_dp,
+    dp(nominal=2)) "Pressure drop calculation for this pipe"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
 
