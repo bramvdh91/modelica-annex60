@@ -57,7 +57,10 @@ equation
 
   velocity = abs(port_a.m_flow/(rho_default*A_cross));
 
-  psi = Modelica.Math.exp(-length/(tau_char*velocity));
+  psi = Modelica.Math.exp(-length*(
+    IBPSA.Utilities.Math.Functions.inverseXRegularized(
+       x=tau_char*velocity,
+       delta=0.01)));
 
   port_a.h_outflow = inStream(port_b.h_outflow);
   port_b.h_outflow = Medium.specificEnthalpy_pTX(
