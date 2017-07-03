@@ -108,11 +108,10 @@ public
   Fluid.FixedResistances.HydraulicDiameter          res(
     redeclare final package Medium = Medium,
     final m_flow_nominal=m_flow_nominal,
-    from_dp=from_dp,
     length=length,
     fac=1,
-    final dh=diameter)
-                     "Pressure drop calculation for this pipe"
+    final dh=diameter,
+    from_dp=from_dp) "Pressure drop calculation for this pipe"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
 
