@@ -66,12 +66,12 @@ equation
   port_b.h_outflow = Medium.specificEnthalpy_pTX(
     port_a.p,
     Tout_b,
-    inStream(port_a.Xi_outflow)) "Calculate enthalpy of output state";
+    Medium.X_default) "Calculate enthalpy of output state";
 
   Tin_a = Medium.temperature_phX(
     port_a.p,
     inStream(port_a.h_outflow),
-    inStream(port_a.Xi_outflow));
+    Medium.X_default);
 
   // Heat losses
   Tout_b = T_amb + (Tin_a - T_amb) * psi;
