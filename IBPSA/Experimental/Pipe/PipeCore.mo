@@ -84,7 +84,7 @@ public
     R=R,
     m_flow_small=m_flow_small,
     T_ini=T_ini_in)
-    annotation (Placement(transformation(extent={{-60,-10},{-80,10}})));
+    annotation (Placement(transformation(extent={{-46,-10},{-66,10}})));
 
   IBPSA.Experimental.Pipe.BaseClasses.HeatLossPipeDelay heatLoss(
     redeclare package Medium = Medium,
@@ -112,12 +112,12 @@ public
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     T_start=T_ini_in)
-    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+    annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   Fluid.Sensors.TemperatureTwoPort senTemOut(
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     T_start=T_ini_out)
-    annotation (Placement(transformation(extent={{16,-10},{36,10}})));
+    annotation (Placement(transformation(extent={{66,-10},{86,10}})));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor bouTemp
     annotation (Placement(transformation(extent={{20,80},{40,100}})));
   Modelica.Blocks.Interfaces.RealOutput TemAv
@@ -157,44 +157,44 @@ public
     annotation (Evaluate=true, Dialog(tab="Advanced"));
 equation
   der(TempAv) = (senTemIn.T - senTemOut.T)*senMasFlo.m_flow/rho_default/(
-    Modelica.Constants.pi*(diameter/2)^2)/length - Qloss/(C*length);
-  Qloss = (TempAv - bouTemp.T)/R*length;
+    Modelica.Constants.pi*(diameter/2)^2)/length + Qloss/(C*length);
+  Qloss = -(TempAv - bouTemp.T)/R*length;
 
 
   connect(senMasFlo.m_flow, timeDelay.m_flow) annotation (Line(
       points={{-30,-11},{-30,-40},{-12,-40}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(reverseHeatLoss.heatPort, heatPort) annotation (Line(points={{-70,10},
-          {-70,40},{0,40},{0,100}}, color={191,0,0}));
+  connect(reverseHeatLoss.heatPort, heatPort) annotation (Line(points={{-56,10},
+          {-56,40},{0,40},{0,100}}, color={191,0,0}));
   connect(heatLoss.heatPort, heatPort) annotation (Line(points={{50,10},{50,40},
           {0,40},{0,100}}, color={191,0,0}));
 
   connect(timeDelay.tauRev, reverseHeatLoss.tau) annotation (Line(points={{11,-36},
-          {24,-36},{24,28},{-64,28},{-64,10}}, color={0,0,127}));
+          {24,-36},{24,28},{-50,28},{-50,10}}, color={0,0,127}));
   connect(timeDelay.tau, heatLoss.tau) annotation (Line(points={{11,-44},{32,-44},
           {32,28},{44,28},{44,10}}, color={0,0,127}));
 
-  connect(port_a, reverseHeatLoss.port_b)
-    annotation (Line(points={{-100,0},{-80,0},{-80,0}}, color={0,127,255}));
   connect(senMasFlo.port_b, pipeAdiabaticPlugFlow.port_a)
     annotation (Line(points={{-20,0},{-10,0}}, color={0,127,255}));
-  connect(heatLoss.port_b, port_b)
-    annotation (Line(points={{60,0},{100,0}}, color={0,127,255}));
-  connect(reverseHeatLoss.port_a, senTemIn.port_a)
-    annotation (Line(points={{-60,0},{-60,0}}, color={0,127,255}));
-  connect(senTemIn.port_b, senMasFlo.port_a)
-    annotation (Line(points={{-40,0},{-40,0}}, color={0,127,255}));
-  connect(pipeAdiabaticPlugFlow.port_b, senTemOut.port_a)
-    annotation (Line(points={{10,0},{16,0}}, color={0,127,255}));
-  connect(senTemOut.port_b, heatLoss.port_a)
-    annotation (Line(points={{36,0},{40,0}}, color={0,127,255}));
   connect(bouTemp.port, heatPort)
     annotation (Line(points={{20,90},{0,90},{0,100}}, color={191,0,0}));
   connect(realExpression1.y, TemAv)
     annotation (Line(points={{81,90},{110,90}}, color={0,0,127}));
   connect(realExpression.y, Qlos) annotation (Line(points={{81,70},{92,70},{92,56},
           {110,56}}, color={0,0,127}));
+  connect(reverseHeatLoss.port_a, senMasFlo.port_a)
+    annotation (Line(points={{-46,0},{-40,0}}, color={0,127,255}));
+  connect(port_a, senTemIn.port_a)
+    annotation (Line(points={{-100,0},{-90,0}}, color={0,127,255}));
+  connect(senTemIn.port_b, reverseHeatLoss.port_b)
+    annotation (Line(points={{-70,0},{-66,0}}, color={0,127,255}));
+  connect(port_b, senTemOut.port_b)
+    annotation (Line(points={{100,0},{86,0}}, color={0,127,255}));
+  connect(heatLoss.port_b, senTemOut.port_a)
+    annotation (Line(points={{60,0},{66,0}}, color={0,127,255}));
+  connect(heatLoss.port_a, pipeAdiabaticPlugFlow.port_b)
+    annotation (Line(points={{40,0},{10,0}}, color={0,127,255}));
   annotation (
     Line(points={{70,20},{72,20},{72,0},{100,0}}, color={0,127,255}),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
