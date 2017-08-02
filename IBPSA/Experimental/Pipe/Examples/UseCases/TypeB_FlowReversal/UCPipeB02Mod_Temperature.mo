@@ -24,7 +24,7 @@ model UCPipeB02Mod_Temperature
         Medium,
     nPorts=1,
     use_p_in=true,
-    T=283.15) "Sink at with constant pressure"
+    T=313.15) "Sink at with constant pressure"
                           annotation (Placement(transformation(extent={{140,18},
             {120,38}})));
   Fluid.Sensors.MassFlowRate         masFloSer(redeclare package Medium =
@@ -60,7 +60,9 @@ model UCPipeB02Mod_Temperature
     m_flow_nominal=m_flow_nominal,
     diameter=0.1,
     thicknessIns=0.03,
-    nPorts=1)          "Dynamic pipe adiabatic"
+    nPorts=1,
+    T_ini_in=333.15,
+    T_ini_out=333.15)  "Dynamic pipe adiabatic"
     annotation (Placement(transformation(extent={{0,20},{20,40}})));
                                           //,
     //thicknessIns=0.03)

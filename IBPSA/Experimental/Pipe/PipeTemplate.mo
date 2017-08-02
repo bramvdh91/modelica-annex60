@@ -13,7 +13,7 @@ model PipeTemplate "Pipe model with geometric data from catalog"
     "Initialize delay for a constant mass flow rate if true, otherwise start from 0"
     annotation (Dialog(tab="Initialization"));
   parameter Modelica.SIunits.MassFlowRate m_flowInit=0
-    annotation (Dialog(tab="Initialization"));
+    annotation (Dialog(tab="Initialization", enable=initDelay));
   PipeHeatLossMod pipe(
     nPorts=nPorts,
     diameter=pipeData.Di,
@@ -27,19 +27,19 @@ model PipeTemplate "Pipe model with geometric data from catalog"
     final thickness=pipeData.s,
     redeclare package Medium = Medium,
     C=pipe.rho_default*Modelica.Constants.pi*(pipeData.Di/2)^2*pipe.cp_default,
-
     T_ini_in=T_ini_in,
     T_ini_out=T_ini_out,
     initDelay=initDelay,
     m_flowInit=m_flowInit)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
   replaceable parameter
     BaseClasses.SinglePipeConfig.IsoPlusSingleRigidStandard.IsoPlusKRE50S
     pipeData(H=H) constrainedby BaseClasses.SinglePipeConfig.SinglePipeData
-    annotation (choicesAllMatching=True, Placement(transformation(extent={{-40,
-            -80},{-20,-60}})));
+    annotation (choicesAllMatching=True, Placement(transformation(extent={{-40,-80},
+            {-20,-60}})));
 
 equation
   connect(port_a, pipe.port_a)
