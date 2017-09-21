@@ -76,7 +76,8 @@ public
     T_ini_in=T_ini_in,
     T_ini_out=T_ini_out,
     m_flowInit=m_flowInit,
-    initDelay=initDelay)           "Describing the pipe behavior"
+    initDelay=initDelay,
+    from_dp=from_dp)               "Describing the pipe behavior"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
