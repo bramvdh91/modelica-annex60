@@ -33,10 +33,10 @@ model PlugFlowPipe
   parameter Modelica.SIunits.Length thickness(start=0.002, min=0)
     "Pipe wall thickness";
 
-  parameter Modelica.SIunits.Temperature T_ini_in(start=Medium.T_default) =
+  parameter Modelica.SIunits.Temperature T_ini_in(start=Medium.T_default)=
     Medium.T_default "Initialization temperature at pipe inlet"
     annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature T_ini_out(start=Medium.T_default) =
+  parameter Modelica.SIunits.Temperature T_ini_out(start=Medium.T_default)=
     Medium.T_default "Initialization temperature at pipe outlet"
     annotation (Dialog(tab="Initialization"));
   parameter Boolean initDelay(start=false) = false
@@ -165,5 +165,6 @@ d = %diameter")}),
 <p><span style=\"font-family: MS Shell Dlg 2;\">Implementation of a pipe with heat loss using the time delay based heat losses and the spatialDistribution operator for the temperature wave propagation through the length of the pipe. </span></p>
 <p><span style=\"font-family: MS Shell Dlg 2;\">The heat loss component adds a heat loss in design direction, and leaves the enthalpy unchanged in opposite flow direction. Therefore it is used in front of and behind the time delay. The delay time is calculated once on the pipe level and supplied to both heat loss operators. </span></p>
 <p><span style=\"font-family: MS Shell Dlg 2;\">This component uses a modified delay operator.</span></p>
+<p><span style=\"font-family: MS Shell Dlg 2;\">Full details on the model implementation and experimental validation can be found in this <a href=\"http://www.sciencedirect.com/science/article/pii/S0196890417307975\">publication</a>.</span></p>
 </html>"));
 end PlugFlowPipe;
