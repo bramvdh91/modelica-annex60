@@ -47,7 +47,8 @@ model PipeAdiabaticPlugFlow
     from_dp=from_dp,
     length=length,
     fac=1,
-    dp(nominal=2))           "Pressure drop calculation for this pipe"
+    dp(nominal=2),
+    linearized=linearized)   "Pressure drop calculation for this pipe"
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
     //final dp_nominal=dp_nominal,
 
@@ -113,6 +114,8 @@ public
     tau=0,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
+  parameter Boolean linearized=false
+    "= true, use linear relation between m_flow and dp for any flow rate";
 equation
   connect(port_a, res.port_a)
     annotation (Line(points={{-100,0},{-70,0},{-40,0}}, color={0,127,255}));

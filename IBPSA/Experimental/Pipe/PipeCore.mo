@@ -48,7 +48,8 @@ model PipeCore
     from_dp=from_dp,
     thickness=thickness,
     T_ini_in=T_ini_in,
-    T_ini_out=T_ini_out)
+    T_ini_out=T_ini_out,
+    linearized=linearized)
     "Model for temperature wave propagation with spatialDistribution operator and hydraulic resistance"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
@@ -126,6 +127,9 @@ public
   parameter Modelica.SIunits.MassFlowRate m_flowInit=0
     annotation (Dialog(tab="Initialization", enable=initDelay));
 
+  parameter Boolean linearized=false
+    "= true, use linear relation between m_flow and dp for any flow rate"
+    annotation (Evaluate=true, Dialog(tab="Advanced"));
 equation
 
   connect(senMasFlo.m_flow, timeDelay.m_flow) annotation (Line(

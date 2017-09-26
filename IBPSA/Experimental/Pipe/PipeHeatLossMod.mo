@@ -76,7 +76,9 @@ public
     T_ini_in=T_ini_in,
     T_ini_out=T_ini_out,
     m_flowInit=m_flowInit,
-    initDelay=initDelay)           "Describing the pipe behavior"
+    initDelay=initDelay,
+    from_dp=from_dp,
+    linearized=linearized)         "Describing the pipe behavior"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
@@ -105,6 +107,9 @@ public
     nPorts=nPorts+1,
     T_start=T_ini_out)
     annotation (Placement(transformation(extent={{60,20},{80,40}})));
+  parameter Boolean linearized=false
+    "= true, use linear relation between m_flow and dp for any flow rate"
+     annotation (Evaluate=true, Dialog(tab="Advanced"));
 equation
 
   connect(pipeCore.heatPort, heatPort) annotation (Line(points={{0,10},{0,10},{
