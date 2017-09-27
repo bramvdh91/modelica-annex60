@@ -1,4 +1,5 @@
-SupplySource
-PipeA60
 DemandSink
+DemandSink_higherRes
+PipeA60
 PipeA60Core
+SupplySource

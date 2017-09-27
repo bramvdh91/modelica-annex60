@@ -1,8 +1,13 @@
+Comparisons
 DoublePipe
-UseCases
+Initialization
+Numeric
+PipeAdiabatic
+PipeHeatTransfer
+TimeDelay
 UseCaseAachen
 UseCaseAachenMSL
 UseCaseAachen_highres
-Initialization
-Numeric
+UseCases
+
 
