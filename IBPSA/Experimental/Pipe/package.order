@@ -1,6 +1,8 @@
 PipeLosslessPlugFlow
 PipeAdiabaticPlugFlow
 PipeCore
+PipeCoreStatic
+PipeHeatLossMod
 PipeTemplate
 PipeHeatLossMod
 DoublePipe_PipeDelay

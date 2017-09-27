@@ -1,7 +1,8 @@
 within IBPSA.Experimental.Pipe;
-model PipeHeatLossMod
-  "Pipe model using spatialDistribution for temperature delay with modified delay tracker"
-  extends IBPSA.Fluid.Interfaces.PartialTwoPort_vector;
+model PipeCoreStatic
+  "Pipe model using static modeling components for comparison"
+  extends IBPSA.Fluid.Interfaces.PartialTwoPort;
+
   parameter Modelica.SIunits.Diameter diameter "Pipe diameter";
   parameter Modelica.SIunits.Length length "Pipe length";
   parameter Modelica.SIunits.Length thicknessIns "Thickness of pipe insulation";
@@ -9,7 +10,7 @@ model PipeHeatLossMod
   /*parameter Modelica.SIunits.ThermalConductivity k = 0.005
     "Heat conductivity of pipe's surroundings";*/
 
-  parameter Modelica.SIunits.MassFlowRate m_flow_nominal=1
+  parameter Modelica.SIunits.MassFlowRate m_flow_nominal=0.1
     "Nominal mass flow rate" annotation (Dialog(group="Nominal condition"));
 
   parameter Modelica.SIunits.MassFlowRate m_flow_small(min=0) = 1E-4*abs(
@@ -20,10 +21,11 @@ model PipeHeatLossMod
     "Average height of surface asperities (default: smooth steel pipe)"
     annotation (Dialog(group="Geometry"));
 
-  parameter Types.ThermalResistanceLength R=1/(lambdaI*2*Modelica.Constants.pi/
-      Modelica.Math.log((diameter/2 + thicknessIns)/(diameter/2)));
-  parameter Types.ThermalCapacityPerLength C=rho_default*Modelica.Constants.pi*(
-      diameter/2)^2*cp_default;
+  parameter IBPSA.Experimental.Pipe.Types.ThermalResistanceLength R=1/(lambdaI*2
+      *Modelica.Constants.pi/Modelica.Math.log((diameter/2 + thicknessIns)/(
+      diameter/2)));
+  parameter IBPSA.Experimental.Pipe.Types.ThermalCapacityPerLength C=
+      rho_default*Modelica.Constants.pi*(diameter/2)^2*cp_default;
   parameter Modelica.SIunits.ThermalConductivity lambdaI=0.026
     "Heat conductivity";
 
@@ -32,8 +34,6 @@ model PipeHeatLossMod
     "Heat capacity of pipe wall";
   parameter Modelica.SIunits.SpecificHeatCapacity cpipe=500 "For steel";
   parameter Modelica.SIunits.Density rho_wall=8000 "For steel";
-  final parameter Modelica.SIunits.Volume V=walCap/(rho_default*cp_default)
-    "Equivalent water volume to represent pipe wall thermal inertia";
 
   // fixme: shouldn't dp(nominal) be around 100 Pa/m?
   // fixme: propagate use_dh and set default to false
@@ -49,38 +49,47 @@ protected
       T=Medium.T_default,
       X=Medium.X_default)
     "Default density (e.g., rho_liquidWater = 995, rho_air = 1.2)"
-    annotation (Dialog(group="Advanced"));
+    annotation (Dialog(group="Advanced", enable=use_rho_nominal));
 
+  parameter Modelica.SIunits.DynamicViscosity mu_default=
+      Medium.dynamicViscosity(Medium.setState_pTX(
+      p=Medium.p_default,
+      T=Medium.T_default,
+      X=Medium.X_default))
+    "Default dynamic viscosity (e.g., mu_liquidWater = 1e-3, mu_air = 1.8e-5)"
+    annotation (Dialog(group="Advanced", enable=use_mu_default));
 
   parameter Modelica.SIunits.SpecificHeatCapacity cp_default=
       Medium.specificHeatCapacityCp(state=sta_default)
     "Heat capacity of medium";
 
 public
-  PipeCore pipeCore(
+  BaseClasses.HeatLossPipeStatic                        reverseHeatLoss(
     redeclare package Medium = Medium,
     diameter=diameter,
     length=length,
-    thicknessIns=thicknessIns,
     C=C,
     R=R,
     m_flow_small=m_flow_small,
-    m_flow_nominal=m_flow_nominal,
-    T_ini_in=T_ini_in,
-    T_ini_out=T_ini_out,
-    m_flowInit=m_flowInit,
-    initDelay=initDelay,
-    from_dp=from_dp,
-    linearized=linearized) "Describing the pipe behavior"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    T_ini=T_ini_in)
+    annotation (Placement(transformation(extent={{-60,-10},{-80,10}})));
+
+  BaseClasses.HeatLossPipeStatic                        heatLoss(
+    redeclare package Medium = Medium,
+    diameter=diameter,
+    length=length,
+    C=C,
+    R=R,
+    m_flow_small=m_flow_small,
+    T_ini=T_ini_out)
+    annotation (Placement(transformation(extent={{40,-10},{60,10}})));
+  IBPSA.Fluid.Sensors.MassFlowRate senMasFlo(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-44,10},{-24,-10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
 
   parameter Boolean from_dp=false
     "= true, use m_flow = f(dp) else dp = f(m_flow)"
-    annotation (Evaluate=true, Dialog(tab="Advanced"));
-  parameter Boolean linearized=false
-    "= true, use linear relation between m_flow and dp for any flow rate"
     annotation (Evaluate=true, Dialog(tab="Advanced"));
   parameter Modelica.SIunits.Length thickness=0.002 "Pipe wall thickness";
 
@@ -96,34 +105,38 @@ public
   parameter Modelica.SIunits.MassFlowRate m_flowInit=0
     annotation (Dialog(tab="Initialization", enable=initDelay));
 
-  Fluid.MixingVolumes.MixingVolume vol(
-    redeclare package Medium = Medium,
-    m_flow_nominal=m_flow_nominal,
-    V=V,
-    nPorts=nPorts+1,
-    T_start=T_ini_out,
-    energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
-    annotation (Placement(transformation(extent={{60,20},{80,40}})));
-
+  Fluid.FixedResistances.HydraulicDiameter          res(
+    redeclare final package Medium = Medium,
+    final m_flow_nominal=m_flow_nominal,
+    length=length,
+    fac=1,
+    final dh=diameter,
+    from_dp=from_dp,
+    dp(nominal=2)) "Pressure drop calculation for this pipe"
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
 
-  connect(pipeCore.heatPort, heatPort)
-    annotation (Line(points={{0,10},{0,10},{0,100}}, color={191,0,0}));
+  connect(reverseHeatLoss.heatPort, heatPort) annotation (Line(points={{-70,10},
+          {-70,40},{0,40},{0,100}}, color={191,0,0}));
+  connect(heatLoss.heatPort, heatPort) annotation (Line(points={{50,10},{50,40},
+          {0,40},{0,100}}, color={191,0,0}));
 
-  connect(pipeCore.port_b, vol.ports[1])
-    annotation (Line(points={{10,0},{70,0},{70,20}}, color={0,127,255}));
-  for i in 1:nPorts loop
-    connect(vol.ports[i + 1], ports_b[i]);
-  end for annotation (Line(points={{70,20},{72,20},{72,6},{72,0},{100,0}},
-        color={0,127,255}));
-  connect(pipeCore.port_a, port_a)
-    annotation (Line(points={{-10,0},{-56,0},{-100,0}}, color={0,127,255}));
+  connect(port_a, reverseHeatLoss.port_b)
+    annotation (Line(points={{-100,0},{-80,0}},         color={0,127,255}));
+  connect(reverseHeatLoss.port_a, senMasFlo.port_a)
+    annotation (Line(points={{-60,0},{-52,0},{-44,0}}, color={0,127,255}));
+  connect(heatLoss.port_b, port_b)
+    annotation (Line(points={{60,0},{100,0}}, color={0,127,255}));
+  connect(senMasFlo.port_b, res.port_a)
+    annotation (Line(points={{-24,0},{-18,0},{-10,0}}, color={0,127,255}));
+  connect(res.port_b, heatLoss.port_a)
+    annotation (Line(points={{10,0},{20,0},{28,0},{40,0}}, color={0,127,255}));
   annotation (
     Line(points={{70,20},{72,20},{72,0},{100,0}}, color={0,127,255}),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}})),
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
-            100}}), graphics={
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
+            100}})),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
+        graphics={
         Rectangle(
           extent={{-100,40},{100,-40}},
           lineColor={0,0,0},
@@ -149,21 +162,21 @@ equation
               100}},
           lineColor={0,0,0},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-30,30},{28,-30}},
-          lineColor={0,0,0},
-          fillPattern=FillPattern.HorizontalCylinder,
-          fillColor={215,202,187})}),
+          fillPattern=FillPattern.Solid)}),
     Documentation(revisions="<html>
 <ul>
-<li><span style=\"font-family: MS Shell Dlg 2;\">July 4, 2016 by Bram van der Heijde:<br>Introduce <code></span><span style=\"font-family: Courier New,courier;\">pipVol</code></span><span style=\"font-family: MS Shell Dlg 2;\">.</span></li>
-<li>October 10, 2015 by Marcus Fuchs:<br>Copy Icon from KUL implementation and rename model; Replace resistance and temperature delay by an adiabatic pipe; </li>
-<li>September, 2015 by Marcus Fuchs:<br>First implementation. </li>
+<li>June 9, 2017 by Marcus Fuchs:<br>First implementation based on <a
+href=\"modelica://IBPSA.Experimental.Pipe.PipeCore\">IBPSA.Experimental.Pipe.PipeCore</a>
+for <a href=\"https://github.com/bramvdh91/modelica-ibpsa/issues/76\">issue
+76</a> </li>
 </ul>
 </html>", info="<html>
-<p><span style=\"font-family: MS Shell Dlg 2;\">Implementation of a pipe with heat loss using the time delay based heat losses and the spatialDistribution operator for the temperature wave propagation through the length of the pipe. </span></p>
-<p><span style=\"font-family: MS Shell Dlg 2;\">The heat loss component adds a heat loss in design direction, and leaves the enthalpy unchanged in opposite flow direction. Therefore it is used in front of and behind the time delay. The delay time is calculated once on the pipe level and supplied to both heat loss operators. </span></p>
-<p><span style=\"font-family: MS Shell Dlg 2;\">This component uses a modified delay operator.</span></p>
+<p>This model is intended as a static implementation of a pipe model for direct
+comparison with the dynamic approach in <a
+href=\"modelica://IBPSA.Experimental.Pipe.PipeCore\">IBPSA.Experimental.Pipe.PipeCore</a>.
+Instead of a plug flow component, this model only uses a hydraulic resistance
+model to represent the static hydraulic behavior of the pipe. In addition, the
+heat losses are not calculated based on a fluid parcel's travel time but rather
+based on the current flow velocity. </p>
 </html>"));
-end PipeHeatLossMod;
+end PipeCoreStatic;
