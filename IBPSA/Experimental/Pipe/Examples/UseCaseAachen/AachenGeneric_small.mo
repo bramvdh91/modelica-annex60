@@ -1,13 +1,13 @@
-within Annex60.Experimental.Pipe.Examples.UseCaseAachen;
+within IBPSA.Experimental.Pipe.Examples.UseCaseAachen;
 model AachenGeneric_small
   "Model automatically generated with uesmodels at 2016-12-12 12:20:05.947837"
 
   parameter Modelica.SIunits.Temperature T_amb = 283.15
     "Ambient temperature around pipes";
 
-  package Medium = Annex60.Media.Water(T_default=273.15+70);
+  package Medium = IBPSA.Media.Water(T_default=273.15+70);
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.SupplySource supplysupply(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.SupplySource supplysupply(
     redeclare package Medium = Medium,
     p_supply=1000000)
          annotation(Placement(transformation(
@@ -15,7 +15,7 @@ model AachenGeneric_small
         rotation=0,
         origin={493.7179687603422,553.1762970021425})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA3041(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA3041(
     redeclare package Medium = Medium,
     m_flow_nominal=0.11950286806883365)
       annotation(Placement(transformation(
@@ -23,7 +23,7 @@ model AachenGeneric_small
       rotation=0,
       origin={800.9859902302968,526.1729700647633})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA1465(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA1465(
     redeclare package Medium = Medium,
     m_flow_nominal=0.11950286806883365)
       annotation(Placement(transformation(
@@ -31,7 +31,7 @@ model AachenGeneric_small
       rotation=0,
       origin={611.1243642944979,403.76432359947466})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA3609(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA3609(
     redeclare package Medium = Medium,
     m_flow_nominal=0.11950286806883365)
       annotation(Placement(transformation(
@@ -39,7 +39,7 @@ model AachenGeneric_small
       rotation=0,
       origin={633.6055705813698,272.3579181095751})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA3610(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.DemandSink stationA3610(
     redeclare package Medium = Medium,
     m_flow_nominal=0.11950286806883365)
       annotation(Placement(transformation(
@@ -47,7 +47,7 @@ model AachenGeneric_small
       rotation=0,
       origin={686.7253869769394,537.5230184715364})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64406433(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64406433(
     redeclare package Medium = Medium,
     length=13.336702541819008,
     diameter=0.05,
@@ -60,7 +60,7 @@ model AachenGeneric_small
       rotation=348.47096074174937,
       origin={556.218624532212,174.67068591991458})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64296433(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64296433(
     redeclare package Medium = Medium,
     length=15.292538353453127,
     diameter=0.1,
@@ -73,7 +73,7 @@ model AachenGeneric_small
       rotation=82.14527038648444,
       origin={509.8758644051187,249.87558972114402})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136542(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136542(
     redeclare package Medium = Medium,
     length=28.783990857058694,
     diameter=0.04,
@@ -86,7 +86,7 @@ model AachenGeneric_small
       rotation=173.171267850555,
       origin={680.3354218323283,540.6210459983621})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136519(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136519(
     redeclare package Medium = Medium,
     length=6.808999925417844,
     diameter=0.125,
@@ -99,7 +99,7 @@ model AachenGeneric_small
       rotation=352.1363874766592,
       origin={522.1920924580121,549.2436157829097})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64186419(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64186419(
     redeclare package Medium = Medium,
     length=0.9000000000000282,
     diameter=0.05,
@@ -112,7 +112,7 @@ model AachenGeneric_small
       rotation=352.1363874766566,
       origin={555.9212006793877,555.5889358746955})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64196414(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64196414(
     redeclare package Medium = Medium,
     length=1.2910375054579482,
     diameter=0.1,
@@ -125,7 +125,7 @@ model AachenGeneric_small
       rotation=262.13638747665823,
       origin={551.4118820400488,550.7098421905534})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64183610(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64183610(
     redeclare package Medium = Medium,
     length=15.18956285715749,
     diameter=0.04,
@@ -138,7 +138,7 @@ model AachenGeneric_small
       rotation=352.13638747665885,
       origin={623.2051202056496,546.2960702017486})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136541(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136541(
     redeclare package Medium = Medium,
     length=12.049656021478087,
     diameter=0.1,
@@ -151,7 +151,7 @@ model AachenGeneric_small
       rotation=82.13826471784333,
       origin={525.6563584649152,364.21776974712316})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136522(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136522(
     redeclare package Medium = Medium,
     length=13.16857497799242,
     diameter=0.04,
@@ -164,7 +164,7 @@ model AachenGeneric_small
       rotation=78.47096074174978,
       origin={622.4947839189052,217.8879811345225})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136520(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe65136520(
     redeclare package Medium = Medium,
     length=9.387039205049568,
     diameter=0.04,
@@ -177,7 +177,7 @@ model AachenGeneric_small
       rotation=172.13638747665874,
       origin={571.8693021110371,409.1860056658961})));
 
-  Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64146415(
+  IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components.PipeA60 pipe64146415(
     redeclare package Medium = Medium,
     length=15.627494060500709,
     diameter=0.1,

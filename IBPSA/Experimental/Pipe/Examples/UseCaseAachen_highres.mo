@@ -1,4 +1,4 @@
-within Annex60.Experimental.Pipe.Examples;
+within IBPSA.Experimental.Pipe.Examples;
 package UseCaseAachen_highres "A generic district heating use case from Aachen"
 extends Modelica.Icons.ExamplesPackage;
   package Components
@@ -13,7 +13,7 @@ extends Modelica.Icons.ExamplesPackage;
       parameter Modelica.SIunits.Pressure p_supply
         "Supply pressure for the network";
 
-      Annex60.Fluid.Sources.Boundary_pT source(          redeclare package
+      IBPSA.Fluid.Sources.Boundary_pT source(          redeclare package
           Medium =
             Medium,
         p=p_supply,
@@ -22,10 +22,10 @@ extends Modelica.Icons.ExamplesPackage;
         annotation (Placement(transformation(extent={{-10,-10},{10,10}},
             rotation=270,
             origin={6,30})));
-      Annex60.Fluid.Sensors.MassFlowRate senMasFlo(redeclare package Medium =
+      IBPSA.Fluid.Sensors.MassFlowRate senMasFlo(redeclare package Medium =
             Medium)
         annotation (Placement(transformation(extent={{64,-10},{84,10}})));
-      Annex60.Fluid.Sensors.TemperatureTwoPort T_supply(redeclare package
+      IBPSA.Fluid.Sensors.TemperatureTwoPort T_supply(redeclare package
           Medium =
             Medium, m_flow_nominal=1,
         T_start=333.15) "Supply flow temperature"
@@ -68,7 +68,7 @@ extends Modelica.Icons.ExamplesPackage;
     end SupplySource;
 
     model PipeA60 "Wrapper around A60 pipe model"
-      extends Annex60.Fluid.Interfaces.PartialTwoPort_vector;
+      extends IBPSA.Fluid.Interfaces.PartialTwoPort_vector;
 
       replaceable package Medium =
           Modelica.Media.Interfaces.PartialMedium "Medium in the component"
@@ -137,7 +137,7 @@ extends Modelica.Icons.ExamplesPackage;
         annotation (Dialog(group="Advanced", enable=use_mu_default));
 
     public
-      Annex60.Fluid.Sensors.TemperatureTwoPort senTem_a(redeclare package
+      IBPSA.Fluid.Sensors.TemperatureTwoPort senTem_a(redeclare package
           Medium =
             Medium, m_flow_nominal=m_flow_nominal,
         T_start=333.15) "Temperature at pipe's port a"
@@ -194,7 +194,7 @@ extends Modelica.Icons.ExamplesPackage;
         "Nominal mass flow rate, used for regularization near zero flow"
         annotation(Dialog(group = "Nominal condition"));
 
-      Annex60.Fluid.Sources.MassFlowSource_T sink(
+      IBPSA.Fluid.Sources.MassFlowSource_T sink(
         redeclare package Medium = Medium,
         use_m_flow_in=true,
         nPorts=1) "Flow demand of the substation" annotation (Placement(
@@ -217,7 +217,7 @@ extends Modelica.Icons.ExamplesPackage;
             extent={{-10,-10},{10,10}},
             rotation=270,
             origin={-10,62})));
-      Annex60.Fluid.Sensors.TemperatureTwoPort senT_supply(
+      IBPSA.Fluid.Sensors.TemperatureTwoPort senT_supply(
         redeclare package Medium = Medium,
         m_flow_nominal=m_flow_nominal,
         tau=1,
@@ -273,7 +273,7 @@ extends Modelica.Icons.ExamplesPackage;
         "Nominal mass flow rate, used for regularization near zero flow"
         annotation(Dialog(group = "Nominal condition"));
 
-      Annex60.Fluid.Sources.MassFlowSource_T sink(
+      IBPSA.Fluid.Sources.MassFlowSource_T sink(
         redeclare package Medium = Medium,
         use_m_flow_in=true,
         nPorts=1) "Flow demand of the substation" annotation (Placement(
@@ -296,7 +296,7 @@ extends Modelica.Icons.ExamplesPackage;
             extent={{-10,-10},{10,10}},
             rotation=270,
             origin={-10,62})));
-      Annex60.Fluid.Sensors.TemperatureTwoPort senT_supply(
+      IBPSA.Fluid.Sensors.TemperatureTwoPort senT_supply(
         redeclare package Medium = Medium,
         m_flow_nominal=m_flow_nominal,
         tau=1,
@@ -346,191 +346,191 @@ extends Modelica.Icons.ExamplesPackage;
     parameter Modelica.SIunits.Temperature T_amb = 283.15
       "Ambient temperature around pipes";
 
-    package Medium = Annex60.Media.Water(T_default=273.15+70);
+    package Medium = IBPSA.Media.Water(T_default=273.15+70);
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.SupplySource
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.SupplySource
       supplysupply(redeclare package Medium = Medium, p_supply=1000000)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={493.7179687603422,553.1762970021425})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3041(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={800.9859902302968,526.1729700647633})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3009(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={41.15622872250802,267.8729793290547})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1429(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={178.7590357035367,295.24737596371716})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2468(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={1000.0,760.009355353569})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1447(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={0.0,248.00788872540275})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1462(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={643.9591121370589,685.7340525618907})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1465(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={611.1243642944979,403.76432359947466})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1477(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={445.264151005661,1015.3310001029834})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3529(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={87.97389217101733,0.0})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3609(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={633.6055705813698,272.3579181095751})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3610(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={686.7253869769394,537.5230184715364})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1455(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={302.01574813866176,991.9384509959672})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA1451(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={354.25651753552665,325.5570181995385})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2881(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={240.00670600572022,1007.9852764781073})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2888(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={499.37948555528345,1004.5065764017589})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2974(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={137.63302561482408,24.365004986299837})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2984(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={407.23793871612946,329.2045267658489})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2987(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={223.0360437031334,314.4558610128271})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3065(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={314.1141736122173,61.31892347960303})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3067(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={865.695920593297,795.1571158311488})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3068(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={785.2215204359562,803.8553633085927})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3069(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={716.472973574878,264.54968588511986})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3070(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={799.3495954560514,256.76536953008235})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA2629(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={252.59360912951053,67.57738344430696})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink_higherRes
       stationA3611(redeclare package Medium = Medium, m_flow_nominal=0.11950286806883365)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={704.7186181500654,812.3692882993668})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64536424(
       redeclare package Medium = Medium,
       length=15.841391502597723,
@@ -544,7 +544,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=82.14619966628325,
           origin={580.5651897874982,761.9867827506596})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136540(
       redeclare package Medium = Medium,
       length=16.69461089480488,
@@ -558,7 +558,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=262.14262050959576,
           origin={561.7922768702394,625.9239295565395})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136539(
       redeclare package Medium = Medium,
       length=8.67207429947886,
@@ -572,7 +572,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.14619966628396,
           origin={608.21,687.638})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64406433(
       redeclare package Medium = Medium,
       length=13.336702541819008,
@@ -586,7 +586,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=348.47096074174937,
           origin={561.211,178.436})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64346433(
       redeclare package Medium = Medium,
       length=17.361931556578437,
@@ -600,7 +600,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=180.0856044522311,
           origin={427.759,187.814})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64296433(
       redeclare package Medium = Medium,
       length=15.292538353453127,
@@ -614,7 +614,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=82.14527038648444,
           origin={509.8758644051187,249.87558972114402})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136521(
       redeclare package Medium = Medium,
       length=16.564225427355726,
@@ -628,7 +628,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=90.08560445223141,
           origin={354.36099314586835,255.6306659543048})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136530(
       redeclare package Medium = Medium,
       length=8.046833022932352,
@@ -642,7 +642,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=186.24105697717525,
           origin={320.9068196272772,182.03434463655697})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136516(
       redeclare package Medium = Medium,
       length=34.926499759191024,
@@ -656,7 +656,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=79.03699005971923,
           origin={262.9990418346147,1126.6796554537202})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64822888(
       redeclare package Medium = Medium,
       length=12.551494711088933,
@@ -670,7 +670,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=351.450494627037,
           origin={551.7772411216503,996.6293888431984})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136537(
       redeclare package Medium = Medium,
       length=12.56231505592064,
@@ -684,7 +684,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=116.28587975540567,
           origin={114.1476887256582,71.91347075426796})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136538(
       redeclare package Medium = Medium,
       length=13.326460255229593,
@@ -698,7 +698,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.1452703864843,
           origin={462.9682078591918,321.51618926388886})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136529(
       redeclare package Medium = Medium,
       length=17.411165392313602,
@@ -712,7 +712,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=282.8809360976238,
           origin={239.42149279833862,242.80368758986143})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136535(
       redeclare package Medium = Medium,
       length=12.47474834331793,
@@ -726,7 +726,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=197.60893772723173,
           origin={160.09,141.65})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136531(
       redeclare package Medium = Medium,
       length=16.362420231930344,
@@ -740,7 +740,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=102.8809360976239,
           origin={194.15752269413252,227.91110376936487})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64746472(
       redeclare package Medium = Medium,
       length=2.5136658321401453,
@@ -754,7 +754,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=12.88093609762256,
           origin={211.9,160.94})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136532(
       redeclare package Medium = Medium,
       length=14.220766986581868,
@@ -768,7 +768,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=102.8809360976238,
           origin={300.7311720552808,119.84164952182294})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136528(
       redeclare package Medium = Medium,
       length=16.900704637832263,
@@ -782,7 +782,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=79.44057828087047,
           origin={878.7706064570375,865.2957719991937})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136526(
       redeclare package Medium = Medium,
       length=17.634609005399696,
@@ -796,7 +796,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=79.4405782808705,
           origin={798.863967778617,877.0397543853355})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136523(
       redeclare package Medium = Medium,
       length=14.22406441423505,
@@ -810,7 +810,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=258.4709607417494,
           origin={704.4716336087963,205.71386701578092})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136524(
       redeclare package Medium = Medium,
       length=23.602789930678952,
@@ -824,7 +824,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=225.7950290601658,
           origin={745.909944549383,201.82170883826217})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136543(
       redeclare package Medium = Medium,
       length=11.87381314654729,
@@ -838,7 +838,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=102.88093609762403,
           origin={241.419,114.442})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136517(
       redeclare package Medium = Medium,
       length=19.096458079554452,
@@ -852,7 +852,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=268.71079106997826,
           origin={89.31812200375482,59.73096826111805})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65056499(
       redeclare package Medium = Medium,
       length=2.5271498035235944,
@@ -866,7 +866,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=26.285879755409393,
           origin={102.228,116.186})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136525(
       redeclare package Medium = Medium,
       length=13.751437749766591,
@@ -880,7 +880,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=172.1461996662833,
           origin={647.2109959544991,820.3018722525185})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136542(
       redeclare package Medium = Medium,
       length=28.783990857058694,
@@ -894,7 +894,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=173.171267850555,
           origin={682.335,556.621})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64973009(
       redeclare package Medium = Medium,
       length=17.456894594932496,
@@ -908,7 +908,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=296.28587975540574,
           origin={73.79201669436154,201.7984897650494})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136519(
       redeclare package Medium = Medium,
       length=6.808999925417844,
@@ -922,7 +922,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.1363874766592,
           origin={522.1920924580121,549.2436157829097})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64186419(
       redeclare package Medium = Medium,
       length=0.9000000000000282,
@@ -936,7 +936,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.1363874766566,
           origin={555.9212006793877,555.5889358746955})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64196414(
       redeclare package Medium = Medium,
       length=1.2910375054579482,
@@ -950,7 +950,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=262.13638747665823,
           origin={551.4118820400488,550.7098421905534})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64183610(
       redeclare package Medium = Medium,
       length=15.18956285715749,
@@ -964,7 +964,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.13638747665885,
           origin={623.2051202056496,546.2960702017486})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136541(
       redeclare package Medium = Medium,
       length=12.049656021478087,
@@ -978,7 +978,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=82.13826471784333,
           origin={525.6563584649152,364.21776974712316})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136522(
       redeclare package Medium = Medium,
       length=13.16857497799242,
@@ -992,7 +992,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=78.47096074174978,
           origin={613.348,226.842})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64406444(
       redeclare package Medium = Medium,
       length=9.801654205506187,
@@ -1006,7 +1006,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=348.4709607417499,
           origin={651.9271454495777,155.14804615295594})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64536457(
       redeclare package Medium = Medium,
       length=19.056737426352935,
@@ -1020,7 +1020,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=82.14619966628311,
           origin={600.6963457127407,907.9284981041918})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64576482(
       redeclare package Medium = Medium,
       length=0.8999999999999883,
@@ -1034,7 +1034,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=171.45049462704537,
           origin={607.9321571772828,988.1873706436756})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136527(
       redeclare package Medium = Medium,
       length=24.193791191649396,
@@ -1048,7 +1048,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=349.4505927644658,
           origin={712.0978663939131,968.923342732396})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136515(
       redeclare package Medium = Medium,
       length=75.14839693491729,
@@ -1062,7 +1062,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=141.6425415510864,
           origin={448.8403476650288,1116.498287216023})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64596463(
       redeclare package Medium = Medium,
       length=9.558801116985913,
@@ -1076,7 +1076,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=349.44057828087034,
           origin={852.1758537210278,942.8292868146586})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136518(
       redeclare package Medium = Medium,
       length=34.56251349606464,
@@ -1090,7 +1090,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=301.6550510575044,
           origin={945.9226461603889,847.7218917604039})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64686474(
       redeclare package Medium = Medium,
       length=3.1057214925314414,
@@ -1104,7 +1104,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=192.88093609762288,
           origin={243.02596543549845,168.22875510550506})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64686478(
       redeclare package Medium = Medium,
       length=3.832190439452423,
@@ -1118,7 +1118,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=12.880936097624192,
           origin={271.57755619594406,174.75794486546926})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136533(
       redeclare package Medium = Medium,
       length=19.082905760763538,
@@ -1132,7 +1132,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=170.50482497607643,
           origin={524.72,980.04})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136534(
       redeclare package Medium = Medium,
       length=30.076947788477685,
@@ -1146,7 +1146,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=273.6179142531919,
           origin={294.00356290108544,1118.6562427126498})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136536(
       redeclare package Medium = Medium,
       length=18.323667590582815,
@@ -1160,7 +1160,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=133.46625145326203,
           origin={53.21390233310751,191.8659444632234})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64976499(
       redeclare package Medium = Medium,
       length=0.8999999999999081,
@@ -1174,7 +1174,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=296.28587975540813,
           origin={106.11,148.317})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe65136520(
       redeclare package Medium = Medium,
       length=9.387039205049568,
@@ -1188,7 +1188,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=172.13638747665874,
           origin={571.8693021110371,409.1860056658961})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
                                                                                 pipe64146415(
       redeclare package Medium = Medium,
       length=15.627494060500709,
@@ -1453,44 +1453,44 @@ extends Modelica.Icons.ExamplesPackage;
     parameter Modelica.SIunits.Temperature T_amb = 283.15
       "Ambient temperature around pipes";
 
-    package Medium = Annex60.Media.Water(T_default=273.15+70);
+    package Medium = IBPSA.Media.Water(T_default=273.15+70);
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.SupplySource
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.SupplySource
       supplysupply(redeclare package Medium = Medium, p_supply=1000000)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={493.7179687603422,553.1762970021425})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
       stationA3041(redeclare package Medium = Medium, m_flow_nominal=
           0.11950286806883365) annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={800.9859902302968,526.1729700647633})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
       stationA1465(redeclare package Medium = Medium, m_flow_nominal=
           0.11950286806883365) annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={611.1243642944979,403.76432359947466})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
       stationA3609(redeclare package Medium = Medium, m_flow_nominal=
           0.11950286806883365) annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={633.6055705813698,272.3579181095751})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.DemandSink
       stationA3610(redeclare package Medium = Medium, m_flow_nominal=
           0.11950286806883365) annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={686.7253869769394,537.5230184715364})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe64406433(
       redeclare package Medium = Medium,
       length=13.336702541819008,
@@ -1503,7 +1503,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=348.47096074174937,
           origin={556.218624532212,174.67068591991458})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe64296433(
       redeclare package Medium = Medium,
       length=15.292538353453127,
@@ -1516,7 +1516,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=82.14527038648444,
           origin={509.8758644051187,249.87558972114402})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe65136542(
       redeclare package Medium = Medium,
       length=28.783990857058694,
@@ -1529,7 +1529,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=173.171267850555,
           origin={680.3354218323283,540.6210459983621})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe65136519(
       redeclare package Medium = Medium,
       length=6.808999925417844,
@@ -1542,7 +1542,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.1363874766592,
           origin={522.1920924580121,549.2436157829097})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe64186419(
       redeclare package Medium = Medium,
       length=0.9000000000000282,
@@ -1555,7 +1555,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.1363874766566,
           origin={555.9212006793877,555.5889358746955})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe64196414(
       redeclare package Medium = Medium,
       length=1.2910375054579482,
@@ -1568,7 +1568,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=262.13638747665823,
           origin={551.4118820400488,550.7098421905534})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe64183610(
       redeclare package Medium = Medium,
       length=15.18956285715749,
@@ -1581,7 +1581,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=352.13638747665885,
           origin={623.2051202056496,546.2960702017486})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe65136541(
       redeclare package Medium = Medium,
       length=12.049656021478087,
@@ -1594,7 +1594,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=82.13826471784333,
           origin={525.6563584649152,364.21776974712316})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe65136522(
       redeclare package Medium = Medium,
       length=13.16857497799242,
@@ -1607,7 +1607,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=78.47096074174978,
           origin={622.4947839189052,217.8879811345225})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe65136520(
       redeclare package Medium = Medium,
       length=9.387039205049568,
@@ -1620,7 +1620,7 @@ extends Modelica.Icons.ExamplesPackage;
           rotation=172.13638747665874,
           origin={571.8693021110371,409.1860056658961})));
 
-    Annex60.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
+    IBPSA.Experimental.Pipe.Examples.UseCaseAachen_highres.Components.PipeA60
       pipe64146415(
       redeclare package Medium = Medium,
       length=15.627494060500709,

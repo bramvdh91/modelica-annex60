@@ -1,10 +1,10 @@
-within Annex60.Experimental.Pipe.Examples;
+within IBPSA.Experimental.Pipe.Examples;
 package Numeric
 
   model testNumeric2
-    package Medium = Annex60.Media.Water;
+    package Medium = IBPSA.Media.Water;
 
-    Annex60.Fluid.Sources.Boundary_pT
+    IBPSA.Fluid.Sources.Boundary_pT
                               source(
       redeclare package Medium = Medium,
       use_p_in=true,
@@ -12,7 +12,7 @@ package Numeric
       T=303.15,
       nPorts=2) "Source with high pressure during experiment"
       annotation (Placement(transformation(extent={{-78,28},{-58,48}})));
-    Annex60.Fluid.Sources.Boundary_pT
+    IBPSA.Fluid.Sources.Boundary_pT
                               source1(
       redeclare package Medium = Medium,
       use_p_in=true,
@@ -109,9 +109,9 @@ package Numeric
   end testNumeric2;
 
   model testNumeric
-    package Medium = Annex60.Media.Water;
+    package Medium = IBPSA.Media.Water;
 
-    Annex60.Fluid.Sources.Boundary_pT
+    IBPSA.Fluid.Sources.Boundary_pT
                               source(
       redeclare package Medium = Medium,
       use_p_in=true,
@@ -119,7 +119,7 @@ package Numeric
       T=303.15,
       nPorts=1) "Source with high pressure during experiment"
       annotation (Placement(transformation(extent={{-78,28},{-58,48}})));
-    Annex60.Fluid.Sources.Boundary_pT
+    IBPSA.Fluid.Sources.Boundary_pT
                               source1(
       redeclare package Medium = Medium,
       use_p_in=true,

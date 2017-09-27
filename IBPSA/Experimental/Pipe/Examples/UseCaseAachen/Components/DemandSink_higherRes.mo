@@ -1,4 +1,4 @@
-within Annex60.Experimental.Pipe.Examples.UseCaseAachen.Components;
+within IBPSA.Experimental.Pipe.Examples.UseCaseAachen.Components;
 model DemandSink_higherRes "Simple demand model"
 
   replaceable package Medium =
@@ -12,7 +12,7 @@ model DemandSink_higherRes "Simple demand model"
     "Nominal mass flow rate, used for regularization near zero flow"
     annotation(Dialog(group = "Nominal condition"));
 
-  Annex60.Fluid.Sources.MassFlowSource_T sink(
+  IBPSA.Fluid.Sources.MassFlowSource_T sink(
     redeclare package Medium = Medium,
     use_m_flow_in=true,
     nPorts=1) "Flow demand of the substation" annotation (Placement(
@@ -35,7 +35,7 @@ model DemandSink_higherRes "Simple demand model"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-10,62})));
-  Annex60.Fluid.Sensors.TemperatureTwoPort senT_supply(
+  IBPSA.Fluid.Sensors.TemperatureTwoPort senT_supply(
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     tau=1,
