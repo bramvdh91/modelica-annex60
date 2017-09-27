@@ -51,13 +51,6 @@ protected
     "Default density (e.g., rho_liquidWater = 995, rho_air = 1.2)"
     annotation (Dialog(group="Advanced"));
 
-//   parameter Modelica.SIunits.DynamicViscosity mu_default=
-//       Medium.dynamicViscosity(Medium.setState_pTX(
-//       p=Medium.p_default,
-//       T=Medium.T_default,
-//       X=Medium.X_default))
-//     "Default dynamic viscosity (e.g., mu_liquidWater = 1e-3, mu_air = 1.8e-5)"
-//     annotation (Dialog(group="Advanced", enable=use_mu_default));
 
   parameter Modelica.SIunits.SpecificHeatCapacity cp_default=
       Medium.specificHeatCapacityCp(state=sta_default)
@@ -78,13 +71,16 @@ public
     m_flowInit=m_flowInit,
     initDelay=initDelay,
     from_dp=from_dp,
-    linearized=linearized)         "Describing the pipe behavior"
+    linearized=linearized) "Describing the pipe behavior"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
 
   parameter Boolean from_dp=false
     "= true, use m_flow = f(dp) else dp = f(m_flow)"
+    annotation (Evaluate=true, Dialog(tab="Advanced"));
+  parameter Boolean linearized=false
+    "= true, use linear relation between m_flow and dp for any flow rate"
     annotation (Evaluate=true, Dialog(tab="Advanced"));
   parameter Modelica.SIunits.Length thickness=0.002 "Pipe wall thickness";
 
@@ -104,33 +100,29 @@ public
     redeclare package Medium = Medium,
     m_flow_nominal=m_flow_nominal,
     V=V,
-    nPorts=nPorts+1,
+    nPorts=nPorts + 1,
     T_start=T_ini_out)
     annotation (Placement(transformation(extent={{60,20},{80,40}})));
-  parameter Boolean linearized=false
-    "= true, use linear relation between m_flow and dp for any flow rate"
-     annotation (Evaluate=true, Dialog(tab="Advanced"));
+
 equation
 
-  connect(pipeCore.heatPort, heatPort) annotation (Line(points={{0,10},{0,10},{
-          0,100}},         color={191,0,0}));
+  connect(pipeCore.heatPort, heatPort)
+    annotation (Line(points={{0,10},{0,10},{0,100}}, color={191,0,0}));
 
   connect(pipeCore.port_b, vol.ports[1])
     annotation (Line(points={{10,0},{70,0},{70,20}}, color={0,127,255}));
-    for i in 1:nPorts loop
-      connect(vol.ports[i+1], ports_b[i]);
-    end for
-    annotation (Line(points={{70,20},{72,20},{72,6},{72,
-          0},{100,0}}, color={0,127,255}));
+  for i in 1:nPorts loop
+    connect(vol.ports[i + 1], ports_b[i]);
+  end for annotation (Line(points={{70,20},{72,20},{72,6},{72,0},{100,0}},
+        color={0,127,255}));
   connect(pipeCore.port_a, port_a)
-    annotation (Line(points={{-10,0},{-56,0},{-100,0}},
-                                                color={0,127,255}));
+    annotation (Line(points={{-10,0},{-56,0},{-100,0}}, color={0,127,255}));
   annotation (
     Line(points={{70,20},{72,20},{72,0},{100,0}}, color={0,127,255}),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
-            100}})),
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-        graphics={
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
+            100,100}})),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
+            100}}), graphics={
         Rectangle(
           extent={{-100,40},{100,-40}},
           lineColor={0,0,0},
